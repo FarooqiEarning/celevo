@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEVO.COM - Professional Graphic Design Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            color: #454d55;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1.1rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Menu Circle */
+        .menu-circle {
+            width: 30px;
+            height: 30px;
+            background-color: #A4D100; /* Green circle */
+            border-radius: 50%;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* SVG Logo Container Styling */
+        .logo-container {
+            width: 200px;
+            height: 60px;
+            margin-right: 30px; /* Adjusted from original to ensure it's not too far on smaller screens */
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            display: block;
+        }
+
+        .logo-container svg text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800; /* Increased for more impact */
+            fill: #2c3e50;
+        }
+
+        .logo-container svg path {
+            stroke: #A4D100;
+        }
+
+        /* Add glow and italic to the whole logo container */
+        .logo-container {
+            font-style: italic;
+            text-shadow: 0 0 8px rgba(164, 209, 0, 0.5),
+                         0 0 15px rgba(164, 209, 0, 0.3);
+        }
+
+        /* Desktop Navigation (Hidden by default, shown via JS or media query if needed) */
+        .desktop-nav {
+            display: none; /* Initially hidden, will be controlled by media queries */
+        }
+        .desktop-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .desktop-nav li {
+            margin-left: 2.8rem;
+        }
+
+        .desktop-nav a {
+            color: #555;
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            display: block;
+            margin-top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #A4D100;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+
+        .desktop-nav a:hover {
+            color: #A4D100;
+        }
+
+
+        /* Header Contact Info (WhatsApp) */
+        .contact-info-header { /* Will be displayed on larger screens */
+            display: none; /* Hidden by default, shown by media query */
+        }
+
+        .contact-info-header a {
+            color: #25d366;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-left: 2.5rem;
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            border: 2px solid #25d366;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .contact-info-header a i {
+            margin-right: 10px;
+            font-size: 1.25em;
+        }
+
+        .contact-info-header a:hover {
+            background-color: #25d366;
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+
+        /* Mobile Navigation Toggle (Circle) */
+        .mobile-nav-toggle {
+            display: block; /* Visible by default for mobile-first approach */
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            /* margin-right: 15px; */ /* Removed to let flexbox handle spacing */
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none; /* Hidden by default, toggled by JS */
+            position: absolute;
+            top: 100%; /* Position below the header */
+            left: 0;
+            background-color: #ffffff;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            z-index: 999;
+            transform-origin: top left;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .mobile-nav.open {
+            display: block;
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        .mobile-nav.closed {
+            transform: scaleY(0);
+            opacity: 0;
+            pointer-events: none; /* Important for when it's hidden */
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav li {
+            padding: 1rem 2.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-nav li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav li a {
+            color: #454d55;
+            font-weight: 600;
+            font-size: 1.05em;
+            display: block;
+            transition: color 0.3s ease, transform 0.2s ease; /* Added transition */
+        }
+
+        .mobile-nav li a:hover {
+            color: #A4D100;
+            transform: translateX(8px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/2c3e50/ffffff?text=Hero+Background') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 8rem 2rem; /* Adjusted padding for better responsiveness */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px; /* Adjusted min-height */
+            position: relative;
+            overflow: hidden; /* Hide the wave if it overflows */
+        }
+
+        /* Wave Animation */
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px; /* Height of the wave */
+            background: url('https://placehold.co/1000x100/A4D100/333333?text=Wave') repeat-x; /* Placeholder wave image */
+            background-size: 1000px 100px; /* Ensure this matches the image aspect ratio if using a real one */
+            animation: wave 10s linear infinite;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        @keyframes wave {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: 1000px; /* This should match the width of the wave image tile */
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2; /* Ensure content is above the wave */
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem; /* Adjusted for responsiveness */
+            font-weight: 800;
+            margin-bottom: 1.8rem;
+            line-height: 1.2;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.3rem; /* Adjusted for responsiveness */
+            margin-bottom: 3.5rem;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .button {
+            background-color: #A4D100;
+            color: #2c3e50;
+            box-shadow: 0 10px 25px rgba(164, 209, 0, 0.4);
+        }
+
+        .hero .button:hover {
+            background-color: #8bbd00; /* Darker shade on hover */
+            color: #fff;
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 5rem 2rem; /* Adjusted padding */
+            text-align: center;
+            overflow: hidden; /* For animations */
+        }
+
+        section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem; /* Adjusted for responsiveness */
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block; /* Allows ::after to be positioned correctly */
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 90px;
+            height: 5px;
+            background-color: #A4D100;
+            bottom: -15px; /* Position below the text */
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 2.5rem; /* Adjusted gap */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background-color: #fdfdfd;
+            padding: 2.5rem; /* Adjusted padding */
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, background-color 0.3s ease;
+            border: 1px solid #efefef;
+        }
+
+        .service-item:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+            background-color: #f0f8ff; /* Light blue tint on hover */
+        }
+
+        .service-icon {
+            font-size: 3.5rem; /* Adjusted icon size */
+            color: #A4D100;
+            margin-bottom: 1.8rem;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .service-item h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem; /* Adjusted heading size */
+            font-weight: 700;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .service-item p {
+            color: #6c757d;
+            font-size: 1rem; /* Adjusted text size */
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background-color: #eef5f9;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 2.5rem; /* Adjusted gap */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            height: 300px; /* Adjusted height */
+            border-radius: 15px;
+            background-color: #d8e5ed; /* Fallback color */
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #e0e0e0;
+        }
+        .portfolio-item img { /* Style for placeholder images */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item::after { /* Overlay effect */
+            content: 'View Project';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.85);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem; /* Adjusted font size */
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover::after {
+            opacity: 1;
+        }
+
+        .portfolio .button {
+            background-color: #3498db;
+            color: #fff;
+            margin-top: 4rem; /* Adjusted margin */
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .portfolio .button:hover {
+            background-color: #2a7da9; /* Darker blue on hover */
+        }
+
+        /* About Us Section */
+        .about {
+            background-color: #fff;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 1.1rem; /* Adjusted font size */
+            line-height: 1.8;
+            text-align: left; /* Default, will adjust for mobile */
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            justify-content: center; /* Center items when wrapped */
+            align-items: flex-start; /* Align items to the top */
+            gap: 30px; /* Space between image and text */
+        }
+
+        .about-image {
+            width: 250px; /* Adjusted size */
+            height: 250px; /* Adjusted size */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #A4D100;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0; /* Prevent image from shrinking */
+            margin-bottom: 20px; /* Space below image on mobile */
+        }
+
+        .about-content .text-column { /* Added a wrapper for text for better control */
+            flex-grow: 1;
+            max-width: 650px;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+        .about-content p strong { /* Make bold text stand out more */
+            color: #2c3e50;
+        }
+
+        .about-content .contact-details-about a {
+            color: #A4D100;
+            font-weight: 600;
+        }
+        .about-content .contact-details-about a i {
+            margin-right: 5px;
+        }
+
+        .about-content .contact-details-about a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #eef5f9;
+        }
+
+        .contact-details {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #555;
+            font-size: 1.1rem; /* Adjusted font size */
+            line-height: 1.8;
+        }
+
+        .contact-details p {
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-details a {
+            color: #A4D100;
+            font-weight: 600;
+        }
+        .contact-details a i {
+            margin-right: 5px;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Rating Section */
+        .rating-section {
+            background-color: #fff;
+            padding: 4rem 2rem; /* Adjusted padding */
+            text-align: center;
+        }
+
+        .stars-rating {
+            font-size: 2.5rem; /* Adjusted star size */
+            color: #cccccc; /* Default star color */
+            cursor: pointer;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Space between stars */
+        }
+
+        .stars-rating i {
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .stars-rating i:hover {
+            transform: scale(1.1); /* Slight scale on hover */
+        }
+
+        .stars-rating .fas { /* Filled star */
+            color: #f39c12; /* Gold color for filled stars */
+            text-shadow: 0 0 10px rgba(243, 156, 18, 0.7); /* Glow effect */
+        }
+
+        #rating-message {
+            margin-top: 1.8rem;
+            font-size: 1.1rem; /* Adjusted font size */
+            color: #4a4a4a;
+            font-weight: 600;
+            min-height: 30px; /* Prevent layout shift */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 2rem; /* Adjusted padding */
+            font-size: 0.9rem; /* Adjusted font size */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid #4a627d; /* Subtle top border */
+        }
+
+        .back-to-top {
+            display: inline-block;
+            background-color: #4a627d;
+            color: #fff;
+            padding: 0.8rem 1.6rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #5d7897; /* Lighter shade on hover */
+        }
+
+        /* Responsive Design */
+        @media (min-width: 993px) { /* Styles for desktop */
+            .mobile-nav-toggle {
+                display: none; /* Hide mobile toggle on desktop */
+            }
+            .desktop-nav {
+                display: flex; /* Show desktop nav */
+            }
+            .contact-info-header {
+                display: flex; /* Show WhatsApp button in header on desktop */
+            }
+            .logo-container {
+                margin-right: auto; /* Push logo to the left, nav/contact to the right */
+            }
+             header {
+                justify-content: space-between; /* Ensure logo and nav/contact are spaced out */
+            }
+            .header-left { /* Remove this if logo is not meant to be grouped with mobile toggle */
+                 /* flex-grow: 1; */ /* Allow left part to take space if needed */
+            }
+        }
+
+
+        @media (max-width: 992px) {
+            .logo-container {
+                width: 160px;
+                /* margin-right: 20px; */ /* Handled by flex space-between */
+            }
+            /* .desktop-nav is already display: none by default */
+            /* .mobile-nav-toggle is already display: block by default */
+
+            .contact-info-header { /* Hide in header on tablet, can be moved to mobile nav if needed */
+                 display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            section h2 {
+                font-size: 2.5rem;
+            }
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 2rem;
+            }
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center; /* Center text on tablet and mobile */
+            }
+            .about-image {
+                margin-bottom: 25px;
+            }
+            .about-content .text-column {
+                 max-width: 100%; /* Allow text to take full width */
+                 text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 1.5rem;
+                justify-content: space-between; /* Ensure toggle and logo are spaced */
+            }
+            .header-left {
+                /* No specific changes needed here, contains toggle and nav */
+            }
+            .logo-container {
+                width: 140px;
+                margin-right: 0; /* Remove margin as it's centered or spaced by flex */
+                /* flex-grow: 1; */ /* Removed to prevent taking too much space from toggle */
+                /* text-align: center; */ /* SVG alignment is handled by its own flex properties */
+                justify-content: center; /* Center the SVG if it's smaller than container */
+            }
+
+            .hero {
+                padding: 6rem 1.5rem;
+                min-height: auto; /* Let content define height */
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            section {
+                padding: 3rem 1.5rem;
+            }
+            section h2 {
+                font-size: 2rem;
+                margin-bottom: 3rem;
+            }
+            .service-item {
+                padding: 2rem;
+            }
+            .service-icon {
+                font-size: 3rem;
+            }
+            .service-item h3 {
+                font-size: 1.6rem;
+            }
+             .portfolio-item {
+                height: 250px;
+            }
+            .stars-rating {
+                font-size: 2rem;
+            }
+        }
+         @media (max-width: 480px) {
+            .button {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            section h2 {
+                font-size: 1.8rem;
+            }
+            .service-item h3 {
+                font-size: 1.4rem;
+            }
+            .service-item p {
+                font-size: 0.9rem;
+            }
+            .about-image {
+                width: 200px;
+                height: 200px;
+            }
+            .about-content {
+                font-size: 1rem;
+            }
+            .contact-details {
+                font-size: 1rem;
+            }
+            .stars-rating {
+                font-size: 1.8rem;
+                gap: 8px;
+            }
+            #rating-message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+                <div class="menu-circle"></div>
+            </div>
+            <nav class="mobile-nav closed"> <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="logo-container animate__animated animate__fadeInDown animate__delay-0.2s">
+            <svg width="200" height="60" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                <text x="100" y="170" font-family="Poppins, sans-serif" font-weight="700" font-size="120" fill="#2c3e50">
+                    clevo
+                </text>
+                <path d="M215 180 Q220 220 260 220 H360 Q400 220 405 180"
+                      stroke="#A4D100"
+                      stroke-width="20"
+                      fill="none"
+                      stroke-linecap="round"/>
+            </svg>
+        </div>
+         <nav class="desktop-nav animate__animated animate__fadeInDown animate__delay-0.4s">
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="contact-info-header animate__animated animate__fadeInDown animate__delay-0.6s">
+            <a href="https://wa.me/923087447878" target="_blank"><i class="fab fa-whatsapp"></i> 0308-7447878</a>
+        </div>
+    </header>
+
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown animate__delay-0.2s">Elevate Your Brand with Stunning Design.</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-0.6s">We craft exceptional visuals that make you stand out.</p>
+            <a href="#contact" class="button animate__animated animate__fadeInUp animate__delay-1s">Get a Free Consultation</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="animate__animated animate__fadeIn animate__delay-0.2s">Our Expert Services</h2>
+        <div class="services-grid">
+            <div class="service-item animate__animated animate__zoomIn animate__delay-0.4s">
+                <i class="fas fa-palette service-icon"></i>
+                <h3>Logo Design</h3>
+                <p>Create a unique and memorable identity that speaks volumes about your brand's essence.</p>
+            </div>
+            <div class="service-item animate__animated animate__zoomIn animate__delay-0.6s">
+                <i class="fas fa-crop-alt service-icon"></i>
+                <h3>Thumbnail Design</h3>
+                <p>Eye-catching thumbnails optimized to boost click-through rates and engagement for your content.</p>
+            </div>
+            <div class="service-item animate__animated animate__zoomIn animate__delay-0.8s">
+                <i class="fas fa-globe service-icon"></i>
+                <h3>Web Design</h3>
+                <p>Visually appealing, user-friendly, and responsive websites that convert visitors into loyal customers.</p>
+            </div>
+            <div class="service-item animate__animated animate__zoomIn animate__delay-1s">
+                <i class="fas fa-mobile-alt service-icon"></i>
+                <h3>App Design</h3>
+                <p>Intuitive and beautiful mobile application interfaces that enhance user experience and engagement.</p>
+            </div>
+            <div class="service-item animate__animated animate__zoomIn animate__delay-1.2s">
+                <i class="fas fa-thumbtack service-icon"></i>
+                <h3>Poster Design</h3>
+                <p>Impactful posters crafted for maximum visibility, perfect for events, promotions, and marketing campaigns.</p>
+            </div>
+             <div class="service-item animate__animated animate__zoomIn animate__delay-1.4s">
+                <i class="fas fa-brush service-icon"></i>
+                <h3>Graphic Illustrations</h3>
+                <p>Custom, unique illustrations to bring your ideas to life with distinct visual flair and creativity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2 class="animate__animated animate__fadeIn animate__delay-0.2s">Our Creative Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item animate__animated animate__slideInUp animate__delay-0.4s">
+                <img src="https://placehold.co/600x400/A4D100/2c3e50?text=Logo+Project" alt="Portfolio Logo Design" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';">
+            </div>
+            <div class="portfolio-item animate__animated animate__slideInUp animate__delay-0.6s">
+                 <img src="https://placehold.co/600x400/3498db/ffffff?text=Web+Design" alt="Portfolio Web Design"
+                      onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';">
+            </div>
+            <div class="portfolio-item animate__animated animate__slideInUp animate__delay-0.8s">
+                 <img src="https://placehold.co/600x400/f39c12/333333?text=App+Interface" alt="Portfolio App Design"
+                      onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';">
+            </div>
+            <div class="portfolio-item animate__animated animate__slideInUp animate__delay-1s">
+                 <img src="https://placehold.co/600x400/e74c3c/ffffff?text=Poster+Art" alt="Portfolio Poster Design"
+                      onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';">
+            </div>
+        </div>
+        <a href="#contact" class="button animate__animated animate__fadeInUp animate__delay-1.2s">Discuss Your Project</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="animate__animated animate__fadeIn animate__delay-0.2s">About M. Affan & CLEVO.COM</h2>
+        <div class="about-content animate__animated animate__fadeInUp animate__delay-0.4s">
+            <img src="https://placehold.co/300x300/A4D100/ffffff?text=M.+Affan" alt="M. Affan at CLEVO.COM" class="about-image"
+                 onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Photo';">
+            <div class="text-column">
+                <p>Welcome to <strong>CLEVO.COM</strong>, your premier destination for exceptional graphic design. I'm <strong>M. Affan</strong>, the founder and lead designer, dedicated to transforming your ideas into powerful visual assets. My journey in graphic design is fueled by a passion for creativity and a commitment to delivering designs that not only look stunning but also achieve your specific business goals.</p>
+                <p>At CLEVO.COM, we believe that great design is a strategic investment. From <strong>captivating logos</strong> that define your brand identity, to <strong>engaging thumbnails</strong> that boost your online presence, and <strong>intuitive web/app interfaces</strong> that provide seamless user experiences – we handle it all with precision and artistic flair. We pride ourselves on a collaborative approach, ensuring every project reflects your unique vision and resonates with your target audience.</p>
+                <p class="contact-details-about">Let's create something amazing together. Reach out via WhatsApp or email:</p>
+                <p class="contact-details-about"><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/923087447878" target="_blank">0308-7447878</a></p>
+                <p class="contact-details-about"><i class="fas fa-envelope"></i> Email: <a href="mailto:microsoftpc236@gmail.com">microsoftpc236@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="animate__animated animate__fadeIn animate__delay-0.2s">Let's Connect!</h2>
+        <div class="contact-details animate__animated animate__fadeInUp animate__delay-0.4s">
+            <p>Ready to bring your design ideas to life? Get in touch with M. Affan today!</p>
+            <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/923087447878" target="_blank">0308-7447878</a></p>
+            <p><i class="fas fa-envelope"></i> Email: <a href="mailto:microsoftpc236@gmail.com">microsoftpc236@gmail.com</a></p>
+            <p>We're excited to hear about your project!</p>
+        </div>
+    </section>
+
+    <section class="rating-section">
+        <h2 class="animate__animated animate__fadeIn animate__delay-0.2s">Rate Our Services!</h2>
+        <p class="animate__animated animate__fadeInUp animate__delay-0.4s">Your feedback helps us improve and grow.</p>
+        <div class="stars-rating animate__animated animate__fadeInUp animate__delay-0.6s">
+            <i class="far fa-star" data-value="1" aria-label="Rate 1 star"></i>
+            <i class="far fa-star" data-value="2" aria-label="Rate 2 stars"></i>
+            <i class="far fa-star" data-value="3" aria-label="Rate 3 stars"></i>
+            <i class="far fa-star" data-value="4" aria-label="Rate 4 stars"></i>
+            <i class="far fa-star" data-value="5" aria-label="Rate 5 stars"></i>
+        </div>
+        <p id="rating-message" class="animate__animated animate__fadeInUp animate__delay-0.8s" aria-live="polite"></p>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> CLEVO.COM. All rights reserved. Designed by M. Affan.</p>
+        <a href="#top" class="back-to-top">Back to Top</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Navigation Toggle (Circle) ---
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            const menuCircle = mobileNavToggle ? mobileNavToggle.querySelector('.menu-circle') : null;
+
+
+            if (mobileNavToggle && mobileNav && menuCircle) {
+                mobileNavToggle.addEventListener('click', () => {
+                    const isOpen = mobileNav.classList.contains('open');
+                    if (isOpen) {
+                        mobileNav.classList.remove('open');
+                        mobileNav.classList.add('closed');
+                        menuCircle.style.transform = 'scale(1)';
+                        // Set display to none after transition
+                        setTimeout(() => {
+                           if(mobileNav.classList.contains('closed')) mobileNav.style.display = 'none';
+                        }, 300); // Matches CSS transition duration
+                    } else {
+                        mobileNav.style.display = 'block'; // Set display to block before adding open class
+                        // Timeout to allow display:block to take effect before transition
+                        setTimeout(() => {
+                            mobileNav.classList.remove('closed');
+                            mobileNav.classList.add('open');
+                            menuCircle.style.transform = 'scale(0.9)';
+                        }, 10); // Small delay
+                    }
+                });
+
+                // Close mobile menu when a link is clicked
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mobileNav.classList.contains('open')) {
+                            mobileNav.classList.remove('open');
+                            mobileNav.classList.add('closed');
+                            if(menuCircle) menuCircle.style.transform = 'scale(1)';
+                             setTimeout(() => {
+                                if(mobileNav.classList.contains('closed')) mobileNav.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            }
+
+
+            // --- Intersection Observer for Scroll Animations ---
+            const animateElements = document.querySelectorAll('.animate__animated');
+            // Store original animation classes to re-apply them
+            const animationStore = new Map();
+            animateElements.forEach(el => {
+                const animationClass = Array.from(el.classList).find(cls => cls.startsWith('animate__') && cls !== 'animate__animated');
+                if (animationClass) {
+                    animationStore.set(el, animationClass);
+                    el.classList.remove(animationClass); // Remove initially
+                }
+            });
+
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const originalAnimation = animationStore.get(entry.target);
+                        if (originalAnimation && !entry.target.classList.contains('animation-played')) {
+                            entry.target.classList.add(originalAnimation);
+                            entry.target.classList.add('animation-played');
+                        }
+                        observer.unobserve(entry.target); // Stop observing after animation
+                    }
+                });
+            }, {
+                threshold: 0.15 // Trigger when 15% of the element is visible
+            });
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // --- Smooth Scrolling for Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        const header = document.querySelector('header');
+                        const headerOffset = header ? header.offsetHeight : 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 20; // Extra padding
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // --- 5-Star Rating System with Glow Effect ---
+            const stars = document.querySelectorAll('.stars-rating .fa-star');
+            const ratingMessage = document.getElementById('rating-message');
+            let currentRating = 0;
+
+            stars.forEach(star => {
+                star.addEventListener('mouseover', () => {
+                    if (!star.parentElement.classList.contains('rated')) { // Only hover if not permanently rated
+                        resetStarsVisual();
+                        fillStarsVisual(star.dataset.value);
+                        displayRatingMessage(star.dataset.value);
+                        applyGlow(star.dataset.value);
+                    }
+                });
+
+                star.addEventListener('click', () => {
+                    currentRating = star.dataset.value;
+                    star.parentElement.classList.add('rated'); // Mark as rated
+                    resetStarsVisual(); // Clear visuals first
+                    fillStarsVisual(currentRating, true); // Fill permanently
+                    displayRatingMessage(currentRating, true);
+                    applyGlow(currentRating, true);
+                    console.log(`User rated: ${currentRating} stars`);
+
+                    if (parseInt(currentRating) === 5 && typeof confetti === 'function') {
+                        triggerConfetti();
+                    }
+                    // Here you would typically send the rating to a backend
+                });
+
+                star.addEventListener('mouseout', () => {
+                     if (!star.parentElement.classList.contains('rated')) {
+                        resetStarsVisual();
+                        if (currentRating > 0) { // If a rating was previously clicked (but not this specific click session)
+                            fillStarsVisual(currentRating, true);
+                            displayRatingMessage(currentRating, true);
+                            applyGlow(currentRating, true);
+                        } else {
+                           if(ratingMessage) ratingMessage.textContent = '';
+                        }
+                    }
+                });
+            });
+
+            function fillStarsVisual(count, isPermanent = false) {
+                for (let i = 0; i < count; i++) {
+                    if(stars[i]){
+                        stars[i].classList.remove('far');
+                        stars[i].classList.add('fas');
+                        if (isPermanent) {
+                            stars[i].classList.add('permanent-glow');
+                        }
+                    }
+                }
+            }
+
+            function resetStarsVisual() {
+                stars.forEach(star => {
+                    if (!star.classList.contains('permanent-glow') || !star.parentElement.classList.contains('rated')) {
+                        star.classList.remove('fas');
+                        star.classList.add('far');
+                        star.style.textShadow = '';
+                    }
+                });
+            }
+
+
+            function applyGlow(count, isPermanent = false) {
+                for (let i = 0; i < count; i++) {
+                     if(stars[i]){
+                        const glowColor = isPermanent ? 'rgba(243, 156, 18, 0.9)' : 'rgba(243, 156, 18, 0.7)';
+                        stars[i].style.textShadow = `0 0 8px ${glowColor}, 0 0 15px ${glowColor}`;
+                    }
+                }
+            }
+
+            function displayRatingMessage(rating, confirmed = false) {
+                if (!ratingMessage) return;
+                let message = '';
+                switch (parseInt(rating)) {
+                    case 1: message = "Oh no! We'll strive to do better."; break;
+                    case 2: message = "Thanks for the feedback."; break;
+                    case 3: message = "Good! Thank you for your rating."; break;
+                    case 4: message = "Great! We're glad you liked our service!"; break;
+                    case 5: message = "Excellent! Thank you for the 5 stars!"; break;
+                    default: message = 'Hover to rate or click to submit.';
+                }
+                if (confirmed) {
+                    ratingMessage.textContent = `${message} (You rated ${rating} stars)`;
+                    ratingMessage.style.color = '#28a745';
+                } else {
+                    ratingMessage.textContent = message;
+                    ratingMessage.style.color = '#4a4a4a';
+                }
+            }
+             if(ratingMessage && stars.length > 0) { // Initial message
+                ratingMessage.textContent = 'Hover to rate or click to submit.';
+            }
+
+
+            // --- Dynamic "Back to Top" button visibility ---
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.style.display = 'inline-block'; // Use inline-block
+                        backToTopButton.classList.remove('animate__fadeOut');
+                        backToTopButton.classList.add('animate__animated', 'animate__fadeIn');
+                    } else {
+                        if (backToTopButton.style.display !== 'none') { // Only fadeOut if visible
+                            backToTopButton.classList.remove('animate__fadeIn');
+                            backToTopButton.classList.add('animate__fadeOut');
+                            setTimeout(() => {
+                                // Check again before hiding, in case user scrolls up and down quickly
+                                if (window.scrollY <= 300) {
+                                    backToTopButton.style.display = 'none';
+                                }
+                            }, 500); // Match Animate.css default duration (or set your own)
+                        }
+                    }
+                });
+            }
+
+
+            function triggerConfetti() {
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 150,
+                        spread: 90, // A bit narrower spread
+                        origin: { y: 0.6 },
+                        colors: ['#A4D100', '#f39c12', '#3498db', '#ffffff', '#2c3e50'],
+                        scalar: 1.1, // Slightly larger particles
+                        drift: 0.1, // Slight drift
+                        disableForReducedMotion: true
+                    });
+                } else {
+                    console.log("Confetti library not loaded.");
+                }
+            }
+
+            // Set current year in footer
+            const yearSpan = document.getElementById('currentYear');
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
